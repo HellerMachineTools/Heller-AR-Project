@@ -23,20 +23,20 @@ var models = [
         url: './assets/magnemite/scene.gltf',
         scale: '0.5 0.5 0.5',
         info: 'Magnemite',
-        rotation: '0 180 0',
+        rotation: '0 180 0'
     },
     {
         url: './assets/articuno/scene.gltf',
         scale: '0.2 0.2 0.2',
         rotation: '0 180 0',
-        info: 'Articuno',
+        info: 'Articuno'
     },
     {
         url: './assets/dragonite/scene.gltf',
         scale: '0.08 0.08 0.08',
         rotation: '0 180 0',
-        info: 'Dragonite',
-    },
+        info: 'Dragonite'
+    }
 ];
 
 var modelIndex = 0;

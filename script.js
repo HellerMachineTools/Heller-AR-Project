@@ -11,8 +11,8 @@ function staticLoadPlaces() {
         {
             name: 'Pokèmon',
             location: {
-                lat: 52.318390,
-                lng: -1.889119
+                lat: 52.318384,
+                lng: -1.889178
             },
         },
     ];

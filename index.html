@@ -7,21 +7,37 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
     <a-scene
-      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
       embedded
+      loading-screen"embeded: false;"
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-      <a-text
+      
+    <a-assets>
+      <a-asset-item
+        id="animated-asset"
+        source="assets/scene.gltf"                    
+      ></a-asset-item>
+    </a-assets>
+      
+    <a-entity
+      look-at="[gps-camera]"
+      animation-mixer="loop: repeat;"
+      gltf-model="#animated-asset"
+      scale="1.4843527089652198 1.4843527089652198 1.4843527089652198"
+      gps-entity-place="latitude: 52.318406; longitude: -1.889125;"
+    ></a-entity>
+<!--       <a-text
         value="This content will always face you."
         look-at="[gps-camera]"
         scale="50 50 50"
         gps-entity-place="latitude: ${52.318406}; longitude: ${-1.889125}"
-      ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
-    </a-scene>
+      ></a-text> -->
+    <a-camera gps-camera rotation-reader> </a-camera>
   </body>
 </html>

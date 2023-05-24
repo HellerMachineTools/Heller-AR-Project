@@ -11,6 +11,7 @@
 
     <body style="margin: 0; overflow: hidden;">
         <a-scene
+            vr-mode-ui="enabled: false"
             renderer="logarithmicDepthBuffer: true;"
             embedded
             loading-screen="enabled: false;"
@@ -28,17 +29,15 @@
                     look-at="[gps-camera]"
                     scale="50 50 50"
                     gps-entity-place="latitude: 52.31819; longitude: -1.88951;"
-                    position="0 4 0"
                 ></a-text>
 
-                <a-entity
+<!--                 <a-entity
                     look-at="[gps-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     scale="5 5 5"
                     gps-entity-place="latitude: 52.31819; longitude: -1.88951;"
-                    position="0 2 0"
-                ></a-entity>
+                ></a-entity> -->
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>

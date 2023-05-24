@@ -12,18 +12,19 @@
 
   <body style="margin: 0; overflow: hidden">
     <script>
-      AFRAME.registerComponent("locationfinder", {
-        init: function () {
-          navigator.geolocation.getCurrentPosition(function (location) {
-            console.log(location);
-          });
-        },
-      });
+//       AFRAME.registerComponent("locationfinder", {
+//         init: function () {
+//           navigator.geolocation.getCurrentPosition(function (location) {
+//             console.log(location);
+//           });
+//         },
+//       });
 
       window.onload = () => {                       
-        navigator.geolocation.getCurrentPosition((position) => {
-           document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
-           document.querySelector('a-text').setAttribute('value', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+        navigator.geolocation.getCurrentPosition((location) => {
+           console.log(location);
+           // document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
+           document.querySelector('a-text').setAttribute('value', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
         });
       };
     </script>
@@ -36,7 +37,7 @@
         gps-entity-place="latitude:52.318402;longitude:-1.889207;"
       ></a-text>
       
-      <a-camera locationfinder gps-camera rotation-reader></a-camera>
+      <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
   </body>
 </html>

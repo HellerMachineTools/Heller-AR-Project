@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Heller</title>
-      
-              <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-      
-      
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+      <title>Heller</title>  
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+      <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+      <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>   
+      <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+      <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 </head>
 <body>
-<script>
-//       AFRAME.registerComponent("locationfinder", {
-//         init: function () {
-//           navigator.geolocation.getCurrentPosition(function (location) {
-//             console.log(location);
-//           });
-//         },
-//       });
+      <script>
+      //       AFRAME.registerComponent("locationfinder", {
+      //         init: function () {
+      //           navigator.geolocation.getCurrentPosition(function (location) {
+      //             console.log(location);
+      //           });
+      //         },
+      //       });
 
-      window.onload = () => {                       
-        navigator.geolocation.getCurrentPosition((location) => {
-           // document.getElementById('redBox').setAttribute('gps-new-entity-place', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
-           // document.querySelector('a-text').setAttribute('value', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
-        });
-      };
-</script>
-<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
-    <a-entity id="redBox" material='color: red' geometry='primitive: box' scale="10 10 10" gps-new-entity-place="latitude: 52.318410; longitude: -1.88961;"></a-entity>
-    <a-entity id="blueBox" material='color: blue' geometry='primitive: box' scale="10 10 10" gps-new-entity-place="latitude: 52.318402; longitude: -1.88951;"></a-entity>
-</a-scene>
+            window.onload = () => {                       
+              navigator.geolocation.getCurrentPosition((location) => {
+                 // document.getElementById('redBox').setAttribute('gps-new-entity-place', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
+                 // document.querySelector('a-text').setAttribute('value', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
+              });
+            };
+      </script>
+      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+            <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
+            <a-entity id="redBox" material='color: red' geometry='primitive: box' scale="10 10 10" gps-new-entity-place="latitude: 52.318410; longitude: -1.88961;"></a-entity>
+            <a-entity id="blueBox" material='color: blue' geometry='primitive: box' scale="10 10 10" gps-new-entity-place="latitude: 52.318402; longitude: -1.88951;"></a-entity>
+      </a-scene>
 </body>
 </html>
 

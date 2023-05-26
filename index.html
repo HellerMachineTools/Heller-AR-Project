@@ -65,6 +65,28 @@
       //     });
       //   },
       // });
+         
+    AFRAME.registerComponent("marker-distance", {
+         tick: function () {
+             this.markerDistance()
+         },
+         markerDistance: function () {
+             var marker1Pos, marker2Pos
+
+             var marker1 = document.querySelector("#text")
+             var marker2 = document.querySelector("#box")
+
+             marker1Pos = new THREE.Vector3();
+             marker1.object3D.getWorldPosition(marker1Pos);
+
+             marker2Pos = new THREE.Vector3();
+             marker2.object3D.getWorldPosition(marker2Pos);
+
+             //distance
+             this.d = marker1Pos.distanceTo(marker2Pos);
+             console.log("distance" + this.d)
+         }
+     });
 
       window.onload = async () => {                       
         const getCoords = async () => {
@@ -86,7 +108,7 @@
         const marker = document.querySelector('a-box');
         let check;
 
-        marker.addEventListener('click', () => {
+        marker.addEventListener('markerFound', () => {
             let cameraPosition = camera.object3D.position;
             let markerPosition = marker.object3D.position;
             let distance = cameraPosition.distanceTo(markerPosition)
@@ -110,12 +132,14 @@
     <a-scene embedded arjs="source:webcam; debugUIEnabled:false;">
 
           <a-text
+               id="text"
                gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 
                scale="5 5 5"
                align="center"
           ></a-text>
              
           <a-box 
+               id="box"
                material='color: red' 
                gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 
                scale="2 2 2"

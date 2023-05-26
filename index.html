@@ -131,7 +131,7 @@
         const box = document.querySelector('a-box');
         let camPosition = cam.object3D.position.y;
         let boxPosition = box.object3D.position.y;
-        let distance = camPosition.distanceTo(boxPosition);
+        let distance = cam.object3D.position.distanceTo(box.object3D.position);
         console.log('Camera object3D position: ' + camPosition + 'm');
         console.log('Box object3D position: ' + boxPosition + 'm');
         console.log('Camera to box distance (object3D): ' + distance + 'm');

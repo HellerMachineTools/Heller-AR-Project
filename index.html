@@ -129,8 +129,8 @@
 
         const cam = document.querySelector('[gps-camera]');
         const box = document.querySelector('a-box');
-        let camPosition = cam.object3D.position;
-        let boxPosition = box.object3D.position;
+        let camPosition = cam.object3D.position.y;
+        let boxPosition = box.object3D.position.y;
         let distance = camPosition.distanceTo(boxPosition);
         console.log('Camera object3D position: ' + camPosition + 'm');
         console.log('Box object3D position: ' + boxPosition + 'm');

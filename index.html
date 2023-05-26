@@ -53,43 +53,75 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
   </head>
 
   <body style="margin: 0; overflow: hidden">
     <script>
-//       AFRAME.registerComponent("locationfinder", {
-//         init: function () {
-//           navigator.geolocation.getCurrentPosition(function (location) {
-//             console.log(location);
-//           });
-//         },
-//       });
+      // AFRAME.registerComponent("locationfinder", {
+      //   init: function () {
+      //     navigator.geolocation.getCurrentPosition(function (location) {
+      //       console.log(location);
+      //     });
+      //   },
+      // });
 
-      window.onload = () => {                       
-        navigator.geolocation.getCurrentPosition((location) => {
-           console.log(location);
-           // document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
-           document.querySelector('a-text').setAttribute('value', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
-           document.querySelector('a-text').setAttribute('gps-new-entity-place', `latitude: ${location.coords.latitude}; longitude: ${location.coords.longitude};`)
+      window.onload = async () => {                       
+        const getCoords = async () => {
+            const pos = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+        
+            return {
+                long: pos.coords.longitude,
+                lat: pos.coords.latitude,
+            };
+        };
+
+        const coords = await getCoords();
+
+        console.log(coords.lat);
+
+        const camera = document.querySelector('[camera]');
+        const marker = document.querySelector('a-box');
+        let check;
+
+        marker.addEventListener('markerFound', () => {
+            let cameraPosition = camera.object3D.position;
+            let markerPosition = marker.object3D.position;
+            let distance = cameraPosition.distanceTo(markerPosition)
+
+            check = setInterval(() => {
+                cameraPosition = camera.object3D.position;
+                markerPosition = marker.object3D.position;
+                distance = cameraPosition.distanceTo(markerPosition)
+                // document.querySelector('a-text').setAttribute('value', 'Lat: ' & coords.lat & ';' & 'Long: ' & coords.long & ';' );
+
+                console.log(distance);
+            }, 100);
         });
+
+        marker.addEventListener('markerLost', () => {
+            clearInterval(check);
+        })
       };
     </script>
 
     <a-scene embedded arjs="source:webcam; debugUIEnabled:false;">
 
-      <a-text
-        scale="5 5 5"
-        align="center"
-      ></a-text>
-         
-      <a-box 
-           material='color: red' 
-           gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 
-           scale="2 2 2"
-           class="clickable"
-           gesture-handler
-      ></a-box>
+          <a-text
+               gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 
+               scale="5 5 5"
+               align="center"
+          ></a-text>
+             
+          <a-box 
+               material='color: red' 
+               gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 
+               scale="2 2 2"
+               class="clickable"
+               gesture-handler
+          ></a-box>
       
       <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>

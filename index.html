@@ -68,13 +68,13 @@
          
     AFRAME.registerComponent("marker-distance", {
          tick: function () {
-             this.markerDistance()
+             this.markerDistance();
          },
          markerDistance: function () {
-             var marker1Pos, marker2Pos
+             var marker1Pos, marker2Pos;
 
-             var marker1 = document.querySelector("#text")
-             var marker2 = document.querySelector("#box")
+             var marker1 = document.querySelector("a-camera");
+             var marker2 = document.getElementById("#box");
 
              marker1Pos = new THREE.Vector3();
              marker1.object3D.getWorldPosition(marker1Pos);
@@ -84,7 +84,7 @@
 
              //distance
              this.d = marker1Pos.distanceTo(marker2Pos);
-             console.log("distance" + this.d)
+             console.log("distance " + this.d);
          }
      });
 

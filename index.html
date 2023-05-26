@@ -134,7 +134,7 @@
         let boxPosition = box.object3D.position;
         let distance = camPosition.distanceTo(boxPosition)
 
-        console.log(distance);
+        console.log('Camera to box distance: ' + distance + 'm');
       };
     </script>
 
@@ -148,8 +148,6 @@
           ></a-text>
              
           <a-box 
-               locationfinder
-               camera-distance
                id="box"
                material='color: red' 
                gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 
@@ -158,7 +156,7 @@
                gesture-handler
           ></a-box>
       
-      <a-camera locationfinder gps-camera rotation-reader></a-camera>
+      <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
   </body>
 </html>

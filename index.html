@@ -99,8 +99,8 @@
              var camera = document.querySelector('[gps-camera]');
 
 
-             box = new THREE.Vector3();
-             marker1.object3D.getWorldPosition(marker1Pos);
+             marker1Pos = new THREE.Vector3();
+             box.object3D.getWorldPosition(marker1Pos);
 
              marker2Pos = new THREE.Vector3();
              camera.object3D.getWorldPosition(marker2Pos);

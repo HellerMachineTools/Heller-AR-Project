@@ -86,7 +86,7 @@
         const marker = document.querySelector('a-box');
         let check;
 
-        marker.addEventListener('markerFound', () => {
+        marker.addEventListener('click', () => {
             let cameraPosition = camera.object3D.position;
             let markerPosition = marker.object3D.position;
             let distance = cameraPosition.distanceTo(markerPosition)

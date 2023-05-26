@@ -66,21 +66,44 @@
       //   },
       // });
          
-    AFRAME.registerComponent("marker-distance", {
+//     AFRAME.registerComponent("marker-distance", {
+//          tick: function () {
+//              this.markerDistance();
+//          },
+//          markerDistance: function () {
+//              var marker1Pos, marker2Pos;
+
+//              var marker1 = document.querySelector("#text");
+//              var marker2 = document.querySelector("#box");
+
+//              marker1Pos = new THREE.Vector3();
+//              marker1.object3D.getWorldPosition(marker1Pos);
+
+//              marker2Pos = new THREE.Vector3();
+//              marker2.object3D.getWorldPosition(marker2Pos);
+
+//              //distance
+//              this.d = marker1Pos.distanceTo(marker2Pos);
+//              console.log("distance " + this.d);
+//          }
+//      });
+         
+     AFRAME.registerComponent("camera-distance", {
          tick: function () {
-             this.markerDistance();
+             this.cameraDistance();
          },
-         markerDistance: function () {
+         cameraDistance: function () {
              var marker1Pos, marker2Pos;
 
-             var marker1 = document.querySelector("a-camera");
-             var marker2 = document.getElementById("#box");
+             var box = document.querySelector("#box");
+             var camera = document.querySelector('[gps-camera]');
 
-             marker1Pos = new THREE.Vector3();
+
+             box = new THREE.Vector3();
              marker1.object3D.getWorldPosition(marker1Pos);
 
              marker2Pos = new THREE.Vector3();
-             marker2.object3D.getWorldPosition(marker2Pos);
+             camera.object3D.getWorldPosition(marker2Pos);
 
              //distance
              this.d = marker1Pos.distanceTo(marker2Pos);
@@ -139,7 +162,7 @@
           ></a-text>
              
           <a-box 
-                 marker-distance
+               camera-distance
                id="box"
                material='color: red' 
                gps-new-entity-place="latitude:52.3184052;longitude:-1.889205;" 

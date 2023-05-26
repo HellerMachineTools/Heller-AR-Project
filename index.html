@@ -58,13 +58,13 @@
 
   <body style="margin: 0; overflow: hidden">
     <script>
-      // AFRAME.registerComponent("locationfinder", {
-      //   init: function () {
-      //     navigator.geolocation.getCurrentPosition(function (location) {
-      //       console.log(location);
-      //     });
-      //   },
-      // });
+      AFRAME.registerComponent("locationfinder", {
+        init: function () {
+          navigator.geolocation.getCurrentPosition(function (location) {
+            console.log(location);
+          });
+        },
+      });
          
 //     AFRAME.registerComponent("marker-distance", {
 //          tick: function () {
@@ -107,7 +107,7 @@
 
              //distance
              this.d = marker1Pos.distanceTo(marker2Pos);
-             console.log("distance " + this.d);
+             console.log("distance " + this.d + "m");
          }
      });
 
@@ -162,6 +162,7 @@
           ></a-text>
              
           <a-box 
+               locationfinder
                camera-distance
                id="box"
                material='color: red' 
@@ -171,7 +172,7 @@
                gesture-handler
           ></a-box>
       
-      <a-camera gps-camera rotation-reader></a-camera>
+      <a-camera locationfinder gps-camera rotation-reader></a-camera>
     </a-scene>
   </body>
 </html>
